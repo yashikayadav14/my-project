@@ -1,0 +1,28 @@
+*This project is a simple RESTful API built with Node.js and Express.
+It provides endpoints to view, add, and delete playing cards stored in an in-memory array.
+
+How It Works
+
+GET /cards
+
+Returns a JSON list of all cards.
+
+GET /cards/:id
+
+Returns a single card that matches the numeric id in the URL.
+
+Responds with a 404 status if the card doesn’t exist.
+
+POST /cards
+
+Accepts a JSON body with suit and value (e.g., { "suit": "Clubs", "value": "Jack" }).
+
+Creates a new card with a unique incremental id.
+
+Responds with HTTP 201 and the newly added card.
+
+DELETE /cards/:id
+
+Removes the card with the given id.
+
+Returns the deleted card object or a 404 error if not found.
