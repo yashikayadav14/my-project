@@ -1,0 +1,42 @@
+This program is a simple command-line Employee Management System written in Node.js using the built-in readline module.
+It allows you to add, list, and remove employees interactively from the terminal.
+
+How It Works
+
+Menu Interface
+
+When you run the script, it shows a text menu with four options:
+
+Add Employee
+
+List Employees
+
+Remove Employee
+
+Exit
+
+User input is read through the readline interface.
+
+Add Employee
+
+Prompts for an employee’s name and ID.
+
+Checks for duplicate IDs to avoid conflicts.
+
+Stores each employee as an object { name, id } inside the employees array.
+
+List Employees
+
+Displays all employees with their name and ID.
+
+If there are no employees, it shows a “No employees found” message.
+
+Remove Employee
+
+Prompts for an employee ID.
+
+Searches the employees array and removes the matching record if found.
+
+Exit
+
+Gracefully closes the application.
