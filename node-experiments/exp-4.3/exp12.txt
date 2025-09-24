@@ -1,0 +1,37 @@
+The objective of this experiment is to design and implement a web-based seat reservation system using Node.js and Express.js that demonstrates the concept of concurrent resource locking.
+In a real-world ticket booking scenario, multiple users may attempt to reserve the same seat at the same time.
+To avoid conflicts and double-booking, the application must provide a mechanism to temporarily lock a seat before final confirmation.
+
+System Overview
+
+Architecture:
+The system is built as a RESTful API using the Express framework.
+Data for each seat is stored in an in-memory JavaScript object where each seat maintains:
+
+status – can be available, locked, or booked.
+
+lockedBy – the user who has currently locked the seat.
+
+lockTimer – a timer reference for automatic lock expiration.
+
+Endpoints:
+
+GET /seats – Returns the current status of all seats.
+
+POST /lock – Allows a user to place a temporary lock on a seat.
+
+POST /confirm – Confirms and books the seat if it is still locked by the same user.
+
+Locking Mechanism
+
+When a user locks a seat, the server:
+
+Changes the seat’s status to locked.
+
+Records the user’s ID in lockedBy.
+
+Starts a 60-second countdown using setTimeout.
+
+If the user fails to confirm within this period, the lock automatically expires and the seat status returns to available.
+
+This mechanism ensures that while one user is deciding, other users cannot book the same seat, but the resource is also not blocked indefinitely.
