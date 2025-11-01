@@ -1,0 +1,81 @@
+1. name: CI/CD Pipeline
+
+This gives a name to your workflow. It will appear as “CI/CD Pipeline” in the Actions tab on GitHub.
+
+2. on: push → branches: main
+
+This tells GitHub when to run the workflow.
+👉 It runs automatically every time you push code to the main branch.
+
+3. jobs: build-and-test
+
+A job is a collection of steps that run on a virtual machine (runner).
+Here we have one job called build-and-test.
+
+4. runs-on: ubuntu-latest
+
+This tells GitHub to run the job on an Ubuntu operating system (a Linux environment) where it can install Node.js and run commands.
+
+5. - name: Checkout repository
+
+This step uses the GitHub Action actions/checkout@v4 to copy your repository’s code into the runner.
+💡 Without this, the workflow wouldn’t have access to your project files.
+
+6. - name: Setup Node.js
+
+This step installs the required version of Node.js (in this case, version 18) using the action actions/setup-node@v4.
+This makes Node and npm available to use in later steps.
+
+7. - name: Install dependencies
+
+Runs the command:
+
+npm install
+
+
+It installs all the packages listed in your project’s package.json file.
+
+8. - name: Run tests
+
+Runs:
+
+npm test
+
+
+This automatically executes all your test scripts to verify the code is working correctly.
+
+9. - name: Build project
+
+Runs:
+
+npm run build
+
+
+This creates a production-ready build of your project (e.g., optimized React app or Node app).
+
+10. - name: Deploy to GitHub Pages (optional)
+
+This is an optional step for deployment.
+It uses peaceiris/actions-gh-pages@v3 to publish your built project to GitHub Pages — a free hosting service.
+
+It deploys the contents of your build folder.
+
+It uses the GitHub-provided GITHUB_TOKEN for authentication.
+
+It runs only if all previous steps succeed.
+
+🧠 In Short:
+
+Workflow triggers when you push to main.
+
+It checks out your code.
+
+Sets up Node.js.
+
+Installs dependencies.
+
+Runs tests.
+
+Builds the app.
+
+Optionally deploys it automatically.
