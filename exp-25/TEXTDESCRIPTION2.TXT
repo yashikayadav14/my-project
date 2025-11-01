@@ -1,0 +1,35 @@
+Stage 1 — Build Stage
+Line	Description
+FROM node:18-alpine AS build	Starts with a lightweight Node.js image. “AS build” names this stage “build”.
+WORKDIR /app	Sets /app as the working directory inside the container.
+COPY package*.json ./	Copies only dependency files first — improves caching for faster rebuilds.
+RUN npm install	Installs all dependencies needed to build the app.
+COPY . .	Copies the rest of the project files into the container.
+RUN npm run build	Builds the React app — generates a production-ready build folder.
+Stage 2 — Production Stage
+Line	Description
+FROM nginx:alpine	Uses a clean, lightweight Nginx image (for serving static files).
+COPY --from=build /app/build /usr/share/nginx/html	Copies the built files from the “build” stage into Nginx’s public folder.
+EXPOSE 80	Exposes port 80 so the app can be accessed on localhost:80.
+CMD ["nginx", "-g", "daemon off;"]	Runs Nginx in the foreground to serve your React app.
+🧾 .dockerignore Example
+
+Create a .dockerignore file in your project root to exclude unnecessary files:
+
+node_modules
+build
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+README.md
+
+
+This keeps the Docker image smaller and cleaner.
+
+ How to Build and Run
+Build the Docker image:
+docker build -t react-app .
+
+Run the container:
+docker run -p 80:80 react-app
