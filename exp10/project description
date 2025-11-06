@@ -1,0 +1,18 @@
+PProblem Statement
+DDesign and implement a GraphQL API for an e-commerce platform using Node.js (Express) with Apollo Server over MongoDB that exposes products, categories, and orders through a unified schema. Support robust pagination, filtering, and sorting so clients (React) can request exactly the fields they need while the server batches and caches backend calls efficiently. Deliver a secure, documented schema with resolvers that prevent the N+1 query problem, enforce input validation and authorization, and provide predictable performance on large catalogs.
+
+KKey Features
+Unified Schema (SDL) – Types for Product, Category, Order, User, plus input/filter types; custom scalars for DateTime and Decimal.
+Pagination & Sorting – Relay-style connections (cursors) or offset/limit with total counts; sort by price, rating, createdAt, popularity.
+Flexible Filtering – Field-level filters (categoryIds, price range, attributes, inStock, search text) with combinators (AND/OR).
+Efficient Data Access – DataLoader-based batching and caching across resolvers to eliminate N+1; lean MongoDB projections per requested fields.
+Field Selection Awareness – Use GraphQL resolve info to project only needed fields; avoid over-fetching from MongoDB.
+Auth & Authorization – JWT-based auth; role checks (customer/admin); order access restricted to owner or admin; input validation on mutations.
+Mutations – Cart/checkout flow (addToCart, placeOrder, updateOrderStatus), product/category CRUD for admins.
+Search & Text Queries – Optional MongoDB text index hook for simple keyword search on name/description.
+Indexing & Performance – Compound indexes (e.g., categoryId, price, createdAt) aligned with filters; timeouts and server-side limits to guard expensive queries.
+Error Handling & Contracts – Structured error extensions (codes, path); deprecations on fields with clear migration notes.
+Introspection & Docs – Playground/Studio with schema docs, example queries, and persisted operations; schema snapshots for change review.
+Caching Hints – @cacheControl hints for public/read operations; ETags on file endpoints if images are proxied separately.
+Observability – Request IDs, per-resolver timings, and metrics for cache hit rate/latency; log slow queries with filter context.
+Dev & Seed – Seed script for products/categories/users; Docker Compose for API and MongoDB; environment-driven configs for local/prod-like runs.
