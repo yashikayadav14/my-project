@@ -1,0 +1,141 @@
+RESPONSIVE BANK TEST CASES & VALIDATIONS
+1. FIELD: Balance
+Requirement: Required to be visible on load; shows user's current available balance.
+The value should be numeric and displayed in currency format (e.g., $1000). The design must ensure the balance is styled prominently in green bold text.
+
+VALID OUTPUTS:
+
+$1000000000 – Default visible value in correct format
+
+$250, $9000.50 – Other valid currency formats
+
+INVALID OUTPUTS:
+
+abc, 100000000$, or empty – Incorrect formatting or missing symbol
+
+Negative values (if not allowed in logic)
+
+2. FIELD: Deposit Button
+Requirement: Required – initiates the deposit process (static version only displays button).
+Button must be green, full-width, with white bold text and consistent padding.
+
+VALID LABELS:
+
+"Deposit" – Clearly labeled for action
+
+Correctly styled with background-color: #28a745
+
+INVALID LABELS/STYLES:
+
+Empty label or wrong color styling (e.g., not green)
+
+Button not full width or inconsistent padding
+
+3. FIELD: Withdraw Button
+Requirement: Required – initiates the withdrawal process (static version only displays button).
+Button must be red, full-width, with white bold text and same styling as deposit button.
+
+VALID LABELS:
+
+"Withdraw" – Properly named and styled
+
+background-color: #dc3545
+
+INVALID LABELS/STYLES:
+
+No label or incorrect color
+
+Misaligned or incorrectly styled button
+
+4. FORM DISPLAY:
+Card should be centered both horizontally and vertically on all screen sizes.
+The layout must remain responsive and visually balanced. Balance and buttons should be aligned inside the white card.
+
+Submit button not present – instead, user actions are represented as UI buttons (Deposit, Withdraw).
+Static display must function visually even without backend interaction.
+
+CSS Styling Breakdown: A Structured Overview
+1. ELEMENT: body (Page Background)
+Purpose: Sets the overall background of the web page.
+Property: background-color: #efefef;
+Effect: Applies a subtle light gray background to soften the visual appearance.
+Property: display: flex; justify-content: center; align-items: center; height: 100vh;
+Effect: Centers the card on the page both vertically and horizontally using Flexbox.
+
+2. ELEMENT: .container (Main Wrapper)
+Purpose: Wraps the .card component.
+Properties & Effects:
+display: flex; justify-content: center; align-items: center;: Keeps the card centered.
+width: 100%; padding: 20px;: Adds space on all sides for responsiveness.
+
+3. ELEMENT: .card (Main Banking Box)
+Purpose: Styles the main box containing the balance and buttons.
+Properties & Effects:
+
+background-color: #ffffff;: Clean white card
+
+padding: 40px 30px;: Internal spacing for readability
+
+border-radius: 12px;: Rounded corners
+
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);: Light shadow for elevation
+
+max-width: 300px;: Limits width for aesthetics
+
+width: 100%;: Ensures responsiveness
+
+text-align: center;: Centers inner content
+
+4. ELEMENT: .balance (Balance Display)
+Purpose: Displays the current balance of the user.
+Property: font-size: 2rem;
+Effect: Increases font size for visibility
+Property: font-weight: bold;
+Effect: Makes the balance text prominent
+Property: color: green;
+Effect: Symbolizes available/positive balance
+Property: margin-bottom: 30px;
+Effect: Adds space between balance and buttons
+
+5. ELEMENT: .btn (Buttons Common Styling)
+Purpose: Styles all buttons inside the form.
+Properties & Effects:
+
+width: 100%;: Full-width buttons
+
+padding: 15px;: Comfortable touch area
+
+font-size: 1rem; font-weight: bold;: Readable and strong appearance
+
+border: none;: Removes browser default
+
+border-radius: 6px;: Slightly rounded edges
+
+margin: 10px 0;: Vertical spacing between buttons
+
+cursor: pointer;: Indicates clickable action
+
+6. ELEMENT: .deposit (Deposit Button)
+Purpose: Styles the green deposit button.
+Properties & Effects:
+
+background-color: #28a745;: Bright green for positive action
+
+color: white;: Good contrast for readability
+
+7. ELEMENT: .withdraw (Withdraw Button)
+Purpose: Styles the red withdraw button.
+Properties & Effects:
+
+background-color: #dc3545;: Red signifies deduction
+
+color: white;: Clear visibility
+
+LEARNING OUTCOMES:
+How to create a responsive bank UI layout using HTML and CSS.
+
+Learnt how to use Flexbox and card-based design to center and structure content responsively.
+
+How to style action buttons (Deposit/Withdraw) with consistent width, padding, and color logic for user guidance.
+
+Understood how to test static UI elements and validate layout consistency across devices.
